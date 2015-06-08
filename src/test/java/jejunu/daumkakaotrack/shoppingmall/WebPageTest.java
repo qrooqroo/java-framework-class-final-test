@@ -41,13 +41,12 @@ public class WebPageTest {
 	}
 	
 	@Test
-	public void HomeTest() throws Exception {
+	public void homeTest() throws Exception {
 		
 		List<Product> list = productService.list();
 		assertNotNull(list);
 		mockMvc.perform(get("/").flashAttr("list", list))
 								.andExpect(status().isOk());
-		
 	}
 
 }

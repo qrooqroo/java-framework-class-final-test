@@ -1,8 +1,5 @@
 package jejunu.daumkakaotrack.shoppingmall.controller;
 
-import java.util.List;
-
-import jejunu.daumkakaotrack.shoppingmall.model.Product;
 import jejunu.daumkakaotrack.shoppingmall.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
