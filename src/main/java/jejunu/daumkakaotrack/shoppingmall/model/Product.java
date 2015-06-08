@@ -1,39 +1,33 @@
 package jejunu.daumkakaotrack.shoppingmall.model;
 
+
 public class Product {
 
-	private String image, name, seller;
-	private int price;
+	private Integer productid, price;
+	private String title, seller;
 	
-	public String getImage() {
-		return image;
+	public Integer getProductid() {
+		return productid;
 	}
-	
-	public void setImage(String image) {
-		this.image = image;
+	public void setProductid(Integer productid) {
+		this.productid = productid;
 	}
-	
-	public String getName() {
-		return name;
+	public Integer getPrice() {
+		return price;
 	}
-	
-	public void setName(String name) {
-		this.name = name;
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
-	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public String getSeller() {
 		return seller;
 	}
-	
 	public void setSeller(String seller) {
 		this.seller = seller;
-	}
-	
-	public int getPrice() {
-		return price;
-	}
-	
-	public void setPrice(int price) {
-		this.price = price;
 	}
 }
