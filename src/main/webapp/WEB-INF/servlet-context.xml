@@ -15,7 +15,6 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<beans:import resource="repository.xml" />
 	<view-controller path="/**/*.jeju" />
 
 </beans:beans>

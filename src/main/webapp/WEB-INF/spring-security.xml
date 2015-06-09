@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:sec="http://www.springframework.org/schema/security"
+    xsi:schemaLocation="
+      http://www.springframework.org/schema/security
+      http://www.springframework.org/schema/security/spring-security-4.0.xsd
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	
+    <sec:http use-expressions="true">
+    	<sec:intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')"/>
+    	<sec:intercept-url pattern="/account/**" access="hasAuthority('ROLE_USER')"/>
+    	<sec:intercept-url pattern="/**" access="permitAll"/>
+    	<sec:form-login 
+    		login-page="/login"
+    		login-processing-url="/j_spring_security_check"
+    		default-target-url="/"
+			authentication-failure-url="/loginFailed" />
+		<sec:logout 
+			logout-url="/logout"
+			logout-success-url="/j_spring_security_logout" 
+			invalidate-session="true" />
+    </sec:http>
+    
+	<authentication-manager>
+		<authentication-provider>
+			<sec:user-service>
+				<sec:user name="younghwan" password="younghwan" authorities="ROLE_USER"/>
+				<sec:user name="admin" password="admin" authorities="ROLE_ADMIN"/>
+			</sec:user-service>
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>     
+	
