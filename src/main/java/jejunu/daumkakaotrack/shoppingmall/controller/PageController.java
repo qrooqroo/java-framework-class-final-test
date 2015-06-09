@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class LoginController {
+public class PageController {
 
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String moveToLoginPage() {
@@ -15,5 +15,10 @@ public class LoginController {
 	@RequestMapping(value="/signup", method = RequestMethod.GET)
 	public String moveToSignUpPage() {
         return "signup"; 
+	}
+	
+	@RequestMapping(value="/mypage", method = RequestMethod.GET)
+	public String moveToMyPage() {
+        return "mypage"; 
 	}
 }

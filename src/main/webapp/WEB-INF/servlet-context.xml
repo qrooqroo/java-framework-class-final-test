@@ -12,7 +12,7 @@
 	<annotation-driven/>
 	<default-servlet-handler />
 	
-    <resources mapping="/**" location="/resource/"  />
+    <resources mapping="/resource/" location="/resource/"  />
     
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

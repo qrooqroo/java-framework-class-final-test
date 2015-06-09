@@ -7,7 +7,7 @@ import java.util.List;
 
 import jejunu.daumkakaotrack.shoppingmall.model.Product;
 import jejunu.daumkakaotrack.shoppingmall.service.ProductService;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;

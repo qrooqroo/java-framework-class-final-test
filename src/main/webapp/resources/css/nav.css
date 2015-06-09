@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+.navbar-custom{
+	background-color:#773300;
+}
+
+.navbar .nav > li > a{
+	color:#FFFFFF;
+	font-size:20px;
+}
+
+.navbar .nav > li > a:hover{
+	color:#FFFFFF;
+	background-color:#773300;
+}
+
+#navigation{margin-top:20px}

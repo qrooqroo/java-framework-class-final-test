@@ -1,26 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page session="false" %>
+<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인 페이지</title>
 </head>
 <body>
-<div>로그인</div>
-<div>
-	<form name='loginForm' method="POST" action="<c:url value='/j_spring_security_check' />">
-			<div>
-				<input type="text" placeholder="ID" name="username" value="${j_username}" />
+<jsp:include page="toolbar.jsp" flush="false" />
+<jsp:include page="nav.jsp" flush="false" />
+<div class="container">
+	<div>
+		<h1 class="text-center">LOG IN</h1>
+    </div>
+	<form name='loginForm' class="form col-md-12 center-block" 
+			method="GET" action="<c:url value='/j_spring_security_check' />">
+			<div class="form-group">
+				<input type="text" class="form-control input-lg" placeholder="ID"
+						 name="j_username" value="${j_username}" />
 			</div>
-			<div>
-				<input type="password" placeholder="PASSWORD" name="password" value="${j_password}" />
+			<div class="form-group">
+				<input type="password" class="form-control input-lg" 
+						placeholder="PASSWORD" name="j_password" value="${j_password}" />
 			</div>
-			<div>
-				<input type="submit" name="submit" value="로그인" />
+			<div class="form-group">
+				<button class="btn btn-primary btn-lg btn-block" 
+						type="submit">로그인</button>
 			</div>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<span class="pull-right"><a href="#">Register</a></span>
+			<span><a href="#">Need help?</a></span>
 	</form>
-	
 </div>
 
 </body>
