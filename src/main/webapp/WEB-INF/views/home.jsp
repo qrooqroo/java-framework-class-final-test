@@ -8,12 +8,15 @@
 <title>Home</title>
 </head>
 <body>
-	<sec:authorize access="isAnonymous()">
-		<a href="signup"><button>회원가입</button></a>
-		<a href="login"><button>로그인</button></a>
+	<sec:authorize access="! isAuthenticated()">
+		<a href="<c:url value='/signup'/>"><button>회원가입</button></a>
+		<a href="<c:url value='/j_spring_security_login'/>"><button>로그인</button></a>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
-		<a href="/j_spring_security_logout"><button>로그아웃</button></a>
+		<a href="<c:url value='/j_spring_security_logout'/>"><button>로그아웃</button></a>
+	</sec:authorize>
+	<sec:authorize access="hasAuthority('USER_ADMIN')">
+		<a href="<c:url value='/admin'/>"><button>관리자 페이지</button></a>
 	</sec:authorize>
 	<table id="productList">
 		<thead>

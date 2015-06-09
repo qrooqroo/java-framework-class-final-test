@@ -17,7 +17,7 @@ public class HomeController {
 	@Autowired
 	ProductService productService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "/welcom"}, method = RequestMethod.GET)
 	public ModelAndView home() {
 		
 		ModelAndView modelAndView = new ModelAndView("home");

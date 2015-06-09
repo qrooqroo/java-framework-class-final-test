@@ -20,33 +20,47 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/servlet-context.xml")
+@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring-security.xml",
+						"file:src/main/webapp/WEB-INF/servlet-context.xml",
+						"file:src/main/webapp/WEB-INF/repository.xml"})
 @WebAppConfiguration
-public class WebPageTest {
+public class PoductListTest {
 
 	@Autowired
 	ProductService productService;
 	
 	@Autowired
-	WebApplicationContext ctx;
+	WebApplicationContext context;
 	
 	private MockMvc mockMvc;
 	
 	@Before
 	public void setUp(){
-		mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
+		DelegatingFilterProxy securityFilter = new DelegatingFilterProxy();
+		securityFilter.setTargetBeanName("springSecurityFilterChain");
+		securityFilter.setServletContext(context.getServletContext());
+		mockMvc = MockMvcBuilders
+				.webAppContextSetup(context)
+				.addFilter(securityFilter, "/*")
+				.build();
 	}
 	
 	@Test
-	public void homeTest() throws Exception {
+	public void testHomeLoading() throws Exception {
 		
 		List<Product> list = productService.list();
-		assertNotNull(list);
 		mockMvc.perform(get("/").flashAttr("list", list))
 								.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void testGetProductList() throws Exception {
+		List<Product> list = productService.list();
+		assertNotNull(list);
 	}
 
 }

@@ -8,13 +8,17 @@
 <body>
 <div>로그인</div>
 <div>
-	<form>
-		<div>ID<input></div>
-		<div>Password<input></div>
-		<div>
-			<a href=""><button>로그인</button></a>
-			<a href="/ "><button>취소</button></a>
-		</div>
+	<form name='loginForm' method="POST" action="<c:url value='/j_spring_security_check' />">
+			<div>
+				<input type="text" placeholder="ID" name="username" value="${j_username}" />
+			</div>
+			<div>
+				<input type="password" placeholder="PASSWORD" name="password" value="${j_password}" />
+			</div>
+			<div>
+				<input type="submit" name="submit" value="로그인" />
+			</div>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 	
 </div>
