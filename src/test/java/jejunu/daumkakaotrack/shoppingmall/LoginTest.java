@@ -8,8 +8,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultHandler;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
@@ -45,9 +43,10 @@ public class LoginTest {
 	@Test
 	public void testLogin() throws Exception{
 		
-		mockMvc.perform(post("/shoppingmall/j_spring_security_check").with(csrf())
+		mockMvc.perform(post("/j_spring_security_check")
 						.param("j_username", "younghwan")
-						.param("j_password", "younghwan"))
-				.andExpect(status().isOk());
+						.param("j_password", "younghwan")
+						.with(csrf()))
+				.andExpect(status().isFound());
 	}
 }

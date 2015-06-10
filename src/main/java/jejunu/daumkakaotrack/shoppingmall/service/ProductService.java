@@ -9,4 +9,7 @@ import jejunu.daumkakaotrack.shoppingmall.model.Product;
 public interface ProductService {
 
 	List<Product> list();
+	public void addProduct(Product product);
+	public void deleteProduct(int productId);
+	public Product getProductById(int productId);
 }

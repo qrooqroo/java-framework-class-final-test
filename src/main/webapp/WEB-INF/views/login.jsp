@@ -19,16 +19,14 @@
 	<form name='loginForm' class="form col-md-12 center-block" 
 			method="post" action="<c:url value='/j_spring_security_check' />">
 			<div class="form-group">
-				<input type="text" class="form-control input-lg" placeholder="ID" name="j_username"/>
+				<input type="text" class="form-control input-lg" 
+									placeholder="ID" name="j_username"/>
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control input-lg" 
-						placeholder="PASSWORD" name="j_password"/>
+				<input type="password" class="form-control input-lg"
+										 placeholder="PASSWORD" name="j_password"/>
 			</div>
-			<div class="form-group">
-				<button class="btn btn-primary btn-lg btn-block" 
-						type="submit">로그인</button>
-			</div>
+			<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<span class="pull-right"><a href="#">Register</a></span>
 			<span><a href="#">Need help?</a></span>

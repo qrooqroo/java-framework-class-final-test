@@ -18,4 +18,20 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> list() {
 		return productRepository.findAll();
 	}
+
+	@Override
+	public void addProduct(Product product) {
+		productRepository.insert(product);
+	}
+
+	@Override
+	public void deleteProduct(int productId) {
+		productRepository.delete(productId);
+	}
+
+	@Override
+	public Product getProductById(int productId) {
+		return productRepository.selectOne(productId);
+	}
+
 }

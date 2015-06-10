@@ -3,19 +3,19 @@ package jejunu.daumkakaotrack.shoppingmall.model;
 
 public class Product {
 
-	private Integer productid, price;
+	private int id, price;
 	private String title, seller;
 	
-	public Integer getProductid() {
-		return productid;
+	public Integer getId() {
+		return id;
 	}
-	public void setProductid(Integer productid) {
-		this.productid = productid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(Integer price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getTitle() {

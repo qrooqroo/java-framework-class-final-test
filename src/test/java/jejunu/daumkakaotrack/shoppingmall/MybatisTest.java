@@ -3,6 +3,7 @@ package jejunu.daumkakaotrack.shoppingmall;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Random;
 
 import jejunu.daumkakaotrack.shoppingmall.model.Product;
 import jejunu.daumkakaotrack.shoppingmall.service.ProductService;
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
@@ -28,8 +30,36 @@ public class MybatisTest {
 	ProductService productService;
 	
 	@Test
-	public void testGetProductList() throws Exception {
+	public void testGetProductList(){
 		List<Product> list = productService.list();
 		assertNotNull(list);
+	}
+	
+	@Test
+	@Transactional
+	public void testAddGetDeleteProduct(){
+		
+		String title = (new Random().doubles(20)).toString();
+		
+		Product product = new  Product();
+		product.setTitle(title);
+		product.setPrice(10000);
+		product.setSeller("권영환");
+		
+		productService.addProduct(product);
+		
+		List<Product> productList = productService.list();
+		int lastIndex = productList.size()-1;
+		product = productList.get(lastIndex);
+		
+		String title2 = product.getTitle();
+		
+		assertEquals(title, title2);
+		
+		int id = product.getId();
+		title2 = productService.getProductById(id).getTitle();
+		assertEquals(title, title2);
+		
+		productService.deleteProduct(id);
 	}
 }

@@ -4,22 +4,31 @@
 <mapper namespace="jejunu.daumkakaotrack.shoppingmall.repository.ProductRepository">
 	<select id="findAll" resultType="Product" >
 		select 
-			productid, title, price, seller
+			id, title, price, seller
 		from product
 	</select>
-	<!-- <insert id="insert" parameterType="User">
-		insert into userinfo(id,name,password) values(#{id}, #{name}, #{password})
+	<insert id="insert" parameterType="Product">
+		insert 
+			into product(title, price, seller) 
+		values(#{title}, #{price}, #{seller})
 	</insert>
 	<delete id="delete">
-		delete from userinfo where id = #{id}
-	</delete>
-	<select id="findById" resultType="User">
-		select 
-			id, name, password	
-		from userinfo where id = #{id}
+		delete from product where id = #{id}
+	</delete> 
+	<select id="selectOne" resultType="Product">
+		select
+			id, title, price, seller
+		from 
+			product
+		where
+			id = #{id}
 	</select>
-
-	<update id="update" parameterType="User"> 
-		update userinfo set name=#{name}, password=#{password} where id = #{id}
-	</update>  -->
+	<!--<select id="findProductById" resultType="Product">
+		select 
+			id, title, price, seller
+		from product where id = #{id}
+	</select>
+	<update id="updateProduct" parameterType="Product"> 
+		update product set title=#{title}, price=#{price}, seller=#{seller} where id = #{id}
+	</update> -->
 </mapper>
