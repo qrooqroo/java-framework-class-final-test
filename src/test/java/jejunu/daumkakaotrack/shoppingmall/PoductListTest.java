@@ -1,8 +1,5 @@
 package jejunu.daumkakaotrack.shoppingmall;
 
-
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import jejunu.daumkakaotrack.shoppingmall.model.Product;
@@ -55,12 +52,6 @@ public class PoductListTest {
 		List<Product> list = productService.list();
 		mockMvc.perform(get("/").flashAttr("list", list))
 								.andExpect(status().isOk());
-	}
-	
-	@Test
-	public void testGetProductList() throws Exception {
-		List<Product> list = productService.list();
-		assertNotNull(list);
 	}
 
 }

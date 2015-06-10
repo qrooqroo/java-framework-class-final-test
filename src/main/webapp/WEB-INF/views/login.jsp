@@ -17,14 +17,13 @@
 		<h1 class="text-center">LOG IN</h1>
     </div>
 	<form name='loginForm' class="form col-md-12 center-block" 
-			method="GET" action="<c:url value='/j_spring_security_check' />">
+			method="post" action="<c:url value='/j_spring_security_check' />">
 			<div class="form-group">
-				<input type="text" class="form-control input-lg" placeholder="ID"
-						 name="j_username" value="${j_username}" />
+				<input type="text" class="form-control input-lg" placeholder="ID" name="j_username"/>
 			</div>
 			<div class="form-group">
 				<input type="password" class="form-control input-lg" 
-						placeholder="PASSWORD" name="j_password" value="${j_password}" />
+						placeholder="PASSWORD" name="j_password"/>
 			</div>
 			<div class="form-group">
 				<button class="btn btn-primary btn-lg btn-block" 

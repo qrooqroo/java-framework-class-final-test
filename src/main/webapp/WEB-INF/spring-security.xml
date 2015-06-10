@@ -3,31 +3,27 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
-          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
           http://www.springframework.org/schema/security
-          http://www.springframework.org/schema/security/spring-security.xsd">
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 	
     <http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/account**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/mypage**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/**" access="permitAll" />
-		<access-denied-handler error-page="/deny" />
+		<access-denied-handler error-page="/denied" />
 		<form-login login-page="/login" 
-			default-target-url="/welcome"
-			authentication-failure-url="/shoppingmall/login?error"/>
-		<logout logout-success-url="/welcome" />
-		<csrf />
+			default-target-url="/"
+			authentication-failure-url="/login?failed=true"/>
+		<logout invalidate-session="true" logout-success-url="/"/>
+		<csrf  />
 	</http>
     
     <authentication-manager>
     	<authentication-provider>
-    		<!-- <jdbc-user-service data-source-ref="dataSource" 
-    			users-by-username-query="SELECT username, password, enabled FROM USER WHERE username = ?"
-				authorities-by-username-query="SELECT username, role FROME USER_ROLE WHERE username = ?" /> -->
-			<user-service>
-                <user name="admin" password="admin" authorities="ROLE_ADMIN" />
-                <user name="younghwan" password="younghwan" authorities="ROLE_USER" />
-            </user-service>
+    		<jdbc-user-service data-source-ref="dataSource" 
+    			users-by-username-query="select username, password, enabled FROM USER WHERE username = ?"
+				authorities-by-username-query="select username, role FROM USER_ROLE WHERE username = ?" />
     	</authentication-provider>
     </authentication-manager>
    

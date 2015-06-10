@@ -21,4 +21,9 @@ public class PageController {
 	public String moveToMyPage() {
         return "mypage"; 
 	}
+	
+	@RequestMapping(value="/denied", method = RequestMethod.GET)
+	public String moveToDeny() {
+        return "denied"; 
+	}
 }

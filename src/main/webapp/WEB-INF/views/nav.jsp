@@ -15,7 +15,7 @@
 		<div class="container">
 	        <div id="navbar" class="collapse navbar-collapse">
 	        	<ul class="nav navbar-nav">
-		            <li><a href="<c:url value='/welcom'/>">Home</a></li>
+		            <li><a href="<c:url value='/'/>">Home</a></li>
 		            <sec:authorize access="isAuthenticated()">
 		            	<li><a href="<c:url value='/mypage'/>">My Page</a></li>
 		            </sec:authorize>
