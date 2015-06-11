@@ -7,11 +7,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>My Page</title>
+<title>Denied</title>
 </head>
 <body>
-<jsp:include page="toolbar.jsp" flush="false" />
-<jsp:include page="nav.jsp" flush="false" />
 <script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>

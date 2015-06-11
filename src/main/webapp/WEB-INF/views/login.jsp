@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>로그인 페이지</title>
+<title>Login</title>
 </head>
 <body>
 <jsp:include page="toolbar.jsp" flush="false" />
@@ -32,6 +32,7 @@
 			<span><a href="#">Need help?</a></span>
 	</form>
 </div>
-
+<script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>
 </html>

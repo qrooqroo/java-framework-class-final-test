@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jejunu.daumkakaotrack.shoppingmall.repository.UserRepository">
+	<select id="selectOne" resultType="jejunu.daumkakaotrack.shoppingmall.model.User" >
+		select 
+			user.id, user.password, user_role.role, user.enabled
+		from
+			 user, user_role
+		where 
+			user.id = user_role.userid AND user.id = #{id}
+	</select>
+	<insert id="insertUser" parameterType="jejunu.daumkakaotrack.shoppingmall.model.User">
+		insert 
+			into user(id, password, enabled) 
+		values(#{id}, #{password}, #{enabled})
+	</insert>
+	<insert id="insertRole" parameterType="jejunu.daumkakaotrack.shoppingmall.model.User">
+		insert
+			into user_role(userid, role)
+			values(#{id}, #{role})
+	</insert>
+	<!--<delete id="delete">
+		delete from product where id = #{id}
+	</delete> 
+	<update id="updateProduct" parameterType="Product"> 
+		update product set title=#{title}, price=#{price}, seller=#{seller} where id = #{id}
+	</update> -->
+</mapper>

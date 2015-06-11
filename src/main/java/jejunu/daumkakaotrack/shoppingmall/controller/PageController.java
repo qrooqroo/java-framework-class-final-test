@@ -23,7 +23,13 @@ public class PageController {
 	}
 	
 	@RequestMapping(value="/denied", method = RequestMethod.GET)
-	public String moveToDeny() {
+	public String moveToDeniedPage() {
         return "denied"; 
 	}
+	
+	@RequestMapping(value="/product/register", method = RequestMethod.GET)
+	public String moveToRegisterProductPage() {
+        return "addProduct"; 
+	}
+	
 }

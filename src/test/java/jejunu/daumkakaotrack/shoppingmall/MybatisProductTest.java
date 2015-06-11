@@ -21,10 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/servlet-context.xml",
-								"file:src/main/webapp/WEB-INF/repository.xml"})
-public class MybatisTest {
+public class MybatisProductTest extends CommonConfigTest{
 	
 	@Autowired
 	ProductService productService;
@@ -36,8 +33,14 @@ public class MybatisTest {
 	}
 	
 	@Test
-	@Transactional
-	public void testAddGetDeleteProduct(){
+	public void testGetOneProduct(){
+		
+		Product product = productService.findProductById(1);
+		assertEquals(product.getTitle(), "product1");
+	}
+	
+	@Test
+	public void testAddDeleteProduct(){
 		
 		String title = (new Random().doubles(20)).toString();
 		
@@ -45,21 +48,24 @@ public class MybatisTest {
 		product.setTitle(title);
 		product.setPrice(10000);
 		product.setSeller("권영환");
+		product.setComment("comment about " + title);
 		
 		productService.addProduct(product);
 		
 		List<Product> productList = productService.list();
 		int lastIndex = productList.size()-1;
 		product = productList.get(lastIndex);
-		
-		String title2 = product.getTitle();
-		
-		assertEquals(title, title2);
-		
 		int id = product.getId();
-		title2 = productService.getProductById(id).getTitle();
-		assertEquals(title, title2);
+		String title2 = product.getTitle();
+		assertEquals(title, title2); // assert add
 		
 		productService.deleteProduct(id);
+		
+		productList = productService.list();
+		lastIndex = productList.size()-1;
+		product = productList.get(lastIndex);
+		int id2 = product.getId();
+		
+		assertNotEquals(id, id2); // assert delete
 	}
 }

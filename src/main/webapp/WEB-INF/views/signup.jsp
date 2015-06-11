@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Sign Up</title>
 </head>
 <body>
 <jsp:include page="toolbar.jsp" flush="false" />
@@ -19,19 +19,13 @@
 	<form name='signUpForm' class="form col-md-12 center-block" 
 			method="POST" action="<c:url value='/signUp' />">
 			<div class="form-group">
-				<input type="text" class="form-control input-lg" placeholder="ID"/>
+				<input name="id" type="text" class="form-control input-lg" placeholder="ID"/>
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control input-lg" placeholder="PASSWORD"/>
+				<input name="password" type="password" class="form-control input-lg" placeholder="PASSWORD"/>
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control input-lg" placeholder="PASSWORD CONFIRM"/>
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-control input-lg" placeholder="NAME"/>
-			</div>
-			<div class="form-group">
-				<input type="email" class="form-control input-lg" placeholder="E-MAIL"/>
+				<input name="confirm" type="password" class="form-control input-lg" placeholder="PASSWORD CONFIRM"/>
 			</div>
 			<div class="form-group">
 				<select name="authority" class="form-control">
@@ -46,5 +40,7 @@
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 </div>
+<script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>
 </html>

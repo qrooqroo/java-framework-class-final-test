@@ -4,20 +4,20 @@
 <mapper namespace="jejunu.daumkakaotrack.shoppingmall.repository.ProductRepository">
 	<select id="findAll" resultType="Product" >
 		select 
-			id, title, price, seller
+			id, title, price, seller, comment
 		from product
 	</select>
 	<insert id="insert" parameterType="Product">
 		insert 
-			into product(title, price, seller) 
-		values(#{title}, #{price}, #{seller})
+			into product(title, price, seller, comment) 
+		values(#{title}, #{price}, #{seller}, #{comment})
 	</insert>
 	<delete id="delete">
 		delete from product where id = #{id}
 	</delete> 
 	<select id="selectOne" resultType="Product">
 		select
-			id, title, price, seller
+			id, title, price, seller, comment
 		from 
 			product
 		where

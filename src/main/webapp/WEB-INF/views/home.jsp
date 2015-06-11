@@ -13,7 +13,7 @@
 <jsp:include page="nav.jsp" flush="false" />
 <div class="container">
 
-	<div class="panel panel-default">
+	<div class="panel panel-primary">
 	  <div class="panel-heading">제품 목록</div>
 	 
 	  <!-- Table -->
@@ -27,8 +27,10 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${list}" var="list">
-				<tr id="${list.productid}">
-					<td class="product-title">${list.title}</td>
+				<tr id="${list.id}">
+					<td class="product-title">
+						<a href="<c:url value='/product/info?productid=${list.id}'/>">${list.title}</a>
+					</td>
 					<td class="product-price">${list.price}</td>
 					<td class="product-seller">${list.seller}</td>
 				</tr>

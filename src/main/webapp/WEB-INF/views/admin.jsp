@@ -6,10 +6,13 @@
 <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>접근 거부</title>
+<title>Admin</title>
 </head>
 <body>
-	접근 거부
+<jsp:include page="toolbar.jsp" flush="false" />
+<jsp:include page="nav.jsp" flush="false" />
+관리자 페이지입니다.
+<script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>
 </html>

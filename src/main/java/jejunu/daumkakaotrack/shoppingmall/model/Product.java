@@ -4,7 +4,7 @@ package jejunu.daumkakaotrack.shoppingmall.model;
 public class Product {
 
 	private int id, price;
-	private String title, seller;
+	private String title, seller, comment;
 	
 	public Integer getId() {
 		return id;
@@ -29,5 +29,11 @@ public class Product {
 	}
 	public void setSeller(String seller) {
 		this.seller = seller;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 }

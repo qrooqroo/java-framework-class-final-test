@@ -11,5 +11,5 @@ public interface ProductService {
 	List<Product> list();
 	public void addProduct(Product product);
 	public void deleteProduct(int productId);
-	public Product getProductById(int productId);
+	public Product findProductById(int productid);
 }

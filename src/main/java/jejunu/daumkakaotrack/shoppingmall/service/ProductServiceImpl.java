@@ -30,8 +30,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public Product getProductById(int productId) {
+	public Product findProductById(int productId) {
 		return productRepository.selectOne(productId);
 	}
-
 }
