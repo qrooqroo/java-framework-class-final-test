@@ -25,8 +25,8 @@ public class UserInfoController {
 		user.setPassword(password);
 		user.setEnabled(true);
 		
-		if(authority.equals("admin"))
-			user.setRole("ROLE_ADMIN");
+		if(authority.equals("seller"))
+			user.setRole("ROLE_SELLER");
 		else
 			user.setRole("ROLE_USER");
 		

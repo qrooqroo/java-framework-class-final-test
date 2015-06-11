@@ -10,7 +10,10 @@ import jejunu.daumkakaotrack.shoppingmall.model.Product;
 public interface ProductRepository {
 
 	List<Product> findAll();
+	List<Product> findByPageNo(int start, int size);
 	void insert(Product product);
 	void delete(int id);
 	Product selectOne(int id);
+	int getTotalCount();
+	void updateProduct(Product product);
 }

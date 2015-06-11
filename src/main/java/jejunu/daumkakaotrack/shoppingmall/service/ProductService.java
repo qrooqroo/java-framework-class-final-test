@@ -8,8 +8,11 @@ import jejunu.daumkakaotrack.shoppingmall.model.Product;
 
 public interface ProductService {
 
-	List<Product> list();
 	public void addProduct(Product product);
 	public void deleteProduct(int productId);
 	public Product findProductById(int productid);
+	List<Product> list(int size, int pageno);
+	List<Product> list();
+	public int getTotalCount();
+	public void editProduct(Product product);
 }

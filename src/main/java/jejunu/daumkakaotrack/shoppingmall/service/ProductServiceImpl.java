@@ -33,4 +33,20 @@ public class ProductServiceImpl implements ProductService{
 	public Product findProductById(int productId) {
 		return productRepository.selectOne(productId);
 	}
+
+	@Override
+	public List<Product> list(int pageno, int size) {
+		int start = size * (pageno-1);
+		return productRepository.findByPageNo(start, size);
+	}
+
+	@Override
+	public int getTotalCount() {
+		return productRepository.getTotalCount();
+	}
+
+	@Override
+	public void editProduct(Product product) {
+		productRepository.updateProduct(product);
+	}
 }

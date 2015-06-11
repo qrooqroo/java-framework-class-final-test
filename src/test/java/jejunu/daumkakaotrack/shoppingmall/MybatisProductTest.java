@@ -68,4 +68,48 @@ public class MybatisProductTest extends CommonConfigTest{
 		
 		assertNotEquals(id, id2); // assert delete
 	}
+	
+	@Test
+	public void testRangeSelectProduct(){
+		int pageno = 3;
+		int size = 10;
+		List<Product> list = productService.list(pageno, size);
+		assertEquals(10, list.size());
+		for (Product product : list) {
+			System.out.println(product.getTitle());
+		}
+	}
+	
+	@Test
+	public void testTotalProductCout(){
+		int totalCount = productService.getTotalCount();
+		System.out.println(totalCount);
+		assertNotNull(totalCount);
+	}
+	
+	@Test
+	public void testUpdateProduct(){
+		
+		Product product = productService.findProductById(1);
+		assertEquals(product.getTitle(), "product1");
+		
+		int price = 200000;
+		String title = "product2";
+		
+		product.setPrice(price);
+		product.setTitle(title);
+		
+		productService.editProduct(product);
+		
+		product = productService.findProductById(1);
+	
+		assertTrue(price == product.getPrice());
+		assertEquals(title, product.getTitle());
+		
+		product.setTitle("product1");
+		product.setPrice(100000);
+		
+		productService.editProduct(product);
+		
+	}
 }

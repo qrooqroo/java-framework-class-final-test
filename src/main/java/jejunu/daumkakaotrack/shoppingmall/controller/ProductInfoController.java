@@ -31,7 +31,7 @@ public class ProductInfoController {
 	@RequestMapping(value="/product/register/process", method = RequestMethod.POST)
 	public String addProduct(@RequestParam String title, @RequestParam String price,
 			@RequestParam String comment, RedirectAttributes redirectAttributes){
-		   
+		
 		Product product = new Product();
 		product.setTitle(title);
 		product.setPrice(Integer.parseInt(price));
@@ -43,6 +43,37 @@ public class ProductInfoController {
 		
 		productService.addProduct(product);
 		redirectAttributes.addAttribute("message", "상품이 등록되었습니다.");
+		
+        return "redirect:/"; 
+	}
+	
+	@RequestMapping(value="/product/edit", method = RequestMethod.POST)
+	public ModelAndView moveToEditProductPage(@RequestParam int productid) {
+		
+		ModelAndView modelAndView = new ModelAndView("editProduct");
+		
+		Product product = productService.findProductById(productid);
+		modelAndView.addObject("product", product);
+        return modelAndView; 
+	}
+	
+	
+	@RequestMapping(value="/product/edit/process", method = RequestMethod.POST)
+	public String editProduct(@RequestParam int productid, @RequestParam String title, 
+			@RequestParam String price, @RequestParam String comment, RedirectAttributes redirectAttributes){
+		   
+		Product product = new Product();
+		product.setId(productid);
+		product.setTitle(title);
+		product.setPrice(Integer.parseInt(price));
+		product.setComment(comment);
+		
+		SecurityContext context = SecurityContextHolder.getContext();
+		String name = context.getAuthentication().getName();
+		product.setSeller(name);
+		
+		productService.editProduct(product);
+		redirectAttributes.addAttribute("message", "상품이 수정되었습니다.");
 		
         return "redirect:/"; 
 	}

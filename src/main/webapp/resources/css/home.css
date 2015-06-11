@@ -1,6 +1,8 @@
 @CHARSET "UTF-8";
 
 #product-list{text-align:center;}
-.product-title{text-align:center;background-color:#FFA7A7;color:#7E0E00;}
-.product-price{text-align:center;width:20%;background-color:#CAF4DE;color:#7E0E00;}
-.product-seller{text-align:center;width:20%;background-color:#FFF0AA;color:#7E0E00;}
+#product-list > thead{background-color:skyblue}
+.product-title{text-align:center;}
+.product-price{text-align:center;width:20%;}
+.product-seller{text-align:center;width:20%;}
+.pagerUnit{display:inline-block;width:30px;}

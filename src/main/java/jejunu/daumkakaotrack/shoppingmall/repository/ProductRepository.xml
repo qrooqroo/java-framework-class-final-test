@@ -23,12 +23,16 @@
 		where
 			id = #{id}
 	</select>
-	<!--<select id="findProductById" resultType="Product">
+	<select id="findByPageNo" resultType="Product">
 		select 
-			id, title, price, seller
-		from product where id = #{id}
+			id, title, price, seller, comment
+		from product
+		Limit #{param1}, #{param2}
+	</select>
+	<select id="getTotalCount" resultType="int">
+		select count(id) from product
 	</select>
 	<update id="updateProduct" parameterType="Product"> 
-		update product set title=#{title}, price=#{price}, seller=#{seller} where id = #{id}
-	</update> -->
+		update product set title=#{title}, price=#{price}, seller=#{seller}, comment=#{comment} where id = #{id}
+	</update>
 </mapper>
