@@ -27,7 +27,7 @@
 					<c:forEach items="${list}" var="list">
 						<tr id="${list.id}">
 							<td class="product-title"><a
-								href="<c:url value='/product/info?productid=${list.id}'/>">${list.title}</a>
+								href="<c:url value='/product/${list.id}'/>">${list.title}</a>
 							</td>
 							<td class="product-price">${list.price}</td>
 							<td class="product-seller">${list.seller}</td>

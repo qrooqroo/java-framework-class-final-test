@@ -11,31 +11,39 @@
 </head>
 <body>
 <div class="container">
-	<form name='loginForm' class="form-horizontal" role="form"
-			method="post" action="<c:url value='/product/edit' />">
-		<div class="col-sm-6">${product.title}</div>
-		<div class="col-sm-2">
-			<a href="<c:url value='/'/>">
-				<button type="button" class="btn btn-default btn-block">목록</button>
-			</a>
-		</div>
-		<div class="col-sm-2">
-			<button type="submit"class="btn btn-default btn-block">수정</button>
-			<input type="hidden" name="productid" value="${product.id}" />
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		</div>
-	</form>
-	<div>
-		<div class="col-sm-5">
+	<div class="col-sm-6">
+		<div id="title" class="row">${product.title}</div>
+		<div>
 			<img src="" width="250" height="200">
 		</div>
-		<div class="col-sm-5 text-center">
+	</div>
+	<div>
+		<div class="col-sm-6" class="row">
+			<div class="col-sm-3">
+				<a href="<c:url value='/'/>">
+					<button type="button" class="btn btn-default">목록</button>
+				</a>
+			</div>
+			<form name='editProductForm' class="form-inline" role="form"
+					method="post" action="<c:url value='/product/edit' />">
+				<div class="col-sm-3">
+					<button type="submit"class="btn btn-default">수정</button>
+					<input type="hidden" name="productid" value="${product.id}" />
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-6">
 			<br>
 			<div>가격 : ${product.price}원</div><br>
 			<div>판매자 : ${product.seller}</div><br>
-			<butotn class="btn btn-default">구매</butotn>
+			<form name='buyForm' class="form-inline" role="form"
+					method="post" action="<c:url value='/product/${product.id}/cart' />">
+				<butotn style="submit" class="btn btn-default">구매</butotn>
+			</form>
 		</div>
 	</div>
+	
 	<div class="col-sm-10">
 		<div><h2>제품 상세 설명</h2></div>
 		<div id="comment">${product.comment}</div>

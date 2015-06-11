@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +20,8 @@ public class ProductInfoController {
 	@Autowired
 	ProductService productService;
 	
-	@RequestMapping(value="/product/info", method = RequestMethod.GET)
-	public ModelAndView productInfo(@RequestParam int productid) {
+	@RequestMapping(value="/product/{productid}", method = RequestMethod.GET)
+	public ModelAndView productInfo(@PathVariable int productid) {
 		ModelAndView modelAndView = new ModelAndView("productInfo");
 	
 		Product product = productService.findProductById(productid);
@@ -76,5 +77,15 @@ public class ProductInfoController {
 		redirectAttributes.addAttribute("message", "상품이 수정되었습니다.");
 		
         return "redirect:/"; 
+	}
+	
+	@RequestMapping(value="/product/{productid}/cart", method = RequestMethod.GET)
+	public ModelAndView moveToCartPage(@PathVariable int productid) {
+		
+		ModelAndView modelAndView = new ModelAndView("cart");
+		Product product = productService.findProductById(productid);
+		modelAndView.addObject("product", product);
+		
+        return modelAndView; 
 	}
 }
