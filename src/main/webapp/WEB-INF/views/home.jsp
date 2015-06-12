@@ -29,7 +29,7 @@
 							<td class="product-title"><a
 								href="<c:url value='/product/${list.id}'/>">${list.title}</a>
 							</td>
-							<td class="product-price">${list.price}</td>
+							<td class="product-price">${list.price}원</td>
 							<td class="product-seller">${list.seller}</td>
 						</tr>
 					</c:forEach>

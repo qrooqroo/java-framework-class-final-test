@@ -24,22 +24,27 @@
 					<button type="button" class="btn btn-default">목록</button>
 				</a>
 			</div>
-			<form name='editProductForm' class="form-inline" role="form"
-					method="post" action="<c:url value='/product/edit' />">
-				<div class="col-sm-3">
-					<button type="submit"class="btn btn-default">수정</button>
-					<input type="hidden" name="productid" value="${product.id}" />
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				</div>
-			</form>
+			<c:if test="${product.seller==userid}">
+				<form name='editProductForm' class="form-inline" role="form"
+						method="post" action="<c:url value='/product/edit' />">
+					<div class="col-sm-3">
+						<button type="submit"class="btn btn-default">수정</button>
+						<input type="hidden" name="productid" value="${product.id}" />
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					</div>
+				</form>
+			</c:if>
 		</div>
 		<div class="col-sm-6">
 			<br>
 			<div>가격 : ${product.price}원</div><br>
 			<div>판매자 : ${product.seller}</div><br>
 			<form name='buyForm' class="form-inline" role="form"
-					method="post" action="<c:url value='/product/${product.id}/cart' />">
-				<butotn style="submit" class="btn btn-default">구매</butotn>
+					method="post" action="<c:url value='/${userid}/cart' />">
+				<button type="submit" class="btn btn-default">구매</button>
+				<input type="hidden" name="productid" value="${product.id}" />
+				<input type="hidden" name="userid" value="${userid}" />
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
 		</div>
 	</div>

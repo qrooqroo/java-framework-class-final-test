@@ -22,7 +22,12 @@ public class ProductInfoController {
 	
 	@RequestMapping(value="/product/{productid}", method = RequestMethod.GET)
 	public ModelAndView productInfo(@PathVariable int productid) {
+		
 		ModelAndView modelAndView = new ModelAndView("productInfo");
+		
+		SecurityContext context = SecurityContextHolder.getContext();
+		String userid = context.getAuthentication().getName();
+		modelAndView.addObject("userid", userid);
 	
 		Product product = productService.findProductById(productid);
 		modelAndView.addObject("product", product);
@@ -77,15 +82,5 @@ public class ProductInfoController {
 		redirectAttributes.addAttribute("message", "상품이 수정되었습니다.");
 		
         return "redirect:/"; 
-	}
-	
-	@RequestMapping(value="/product/{productid}/cart", method = RequestMethod.GET)
-	public ModelAndView moveToCartPage(@PathVariable int productid) {
-		
-		ModelAndView modelAndView = new ModelAndView("cart");
-		Product product = productService.findProductById(productid);
-		modelAndView.addObject("product", product);
-		
-        return modelAndView; 
 	}
 }

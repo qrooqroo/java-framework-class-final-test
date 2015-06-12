@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jejunu.daumkakaotrack.shoppingmall.repository.CartRepository">
+	<select id="select" resultType="Cart">
+		select
+			id, userid, productid, amount
+		from 
+			cart
+		where userid = #{userid}
+	</select>
+	<insert id="insert" parameterType="Cart">
+		insert 
+			into cart(userid, productid, amount) 
+		values(#{userid}, #{productid}, #{amount})
+	</insert>
+	<delete id="delete">
+		delete from cart where userid = #{param1} AND productid = #{param2}
+	</delete>
+	<update id="update" parameterType="Cart"> 
+		update cart set amount=#{amount} where userid=#{userid} and productid=#{productid}
+	</update>
+	<select id="getCount" resultType="int">
+		select
+			count(id)
+		from 
+			cart
+		where userid = #{param1} AND productid = #{param2}
+	</select>
+	<select id="selectOne" resultType="Cart">
+		select
+			id, userid, productid, amount
+		from 
+			cart
+		where userid = #{param1} AND productid = #{param2}
+	</select>
+</mapper>
